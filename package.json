@@ -13,5 +13,10 @@
   "dependencies": {
     "nuxt": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.2",
+    "vue-cli-plugin-pug": "~1.0.7"
+  }
 }
