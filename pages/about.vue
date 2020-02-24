@@ -1,28 +1,18 @@
 <template lang="pug">
   .container
-    .menu
-      .menu__block
-        nuxt-link.menu__link(to="/")
-          | Главная
-      .menu__block
-        nuxt-link.menu__link(active-class="menu__link_current" to="/about")
-          | О нас
-      .menu__block
-        nuxt-link.menu__link(to="/items")
-          | Товары
-      .menu__block
-        nuxt-link.menu__link(to="/connect") 
-          | Связаться с нами
+    navigation
     .page
       links
 </template>
 
 <script>
 import links from '~/components/links.vue'
-
+import navigation from '~/components/navigation.vue'
+import trans from '~/mixins/trans'
 export default {
+  mixins: [trans],
   components: {
-    links
+    navigation, links
   }
 }
 </script>

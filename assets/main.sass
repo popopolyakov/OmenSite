@@ -1,0 +1,47 @@
+.slideleft-leave-active
+  .page
+    transition: all 2s ease-in-out
+  .nav__link__current
+    transition: all 2s ease-in-out
+
+.slideleft-enter-active
+  .page
+    transition: all 2s ease-in-out
+  .nav__link__current
+    transition: all 2s ease-in-out
+
+.slideleft-enter
+  .page, .nav__link__current
+    transform: translateX(-100%)
+    opacity: 0
+
+.slideleft-enter-to
+  .page, .nav__link__current
+    transform: translateX(0%)
+    opacity: 0
+
+.slideleft-leave
+  .page, .nav__link__current
+    transform: translateX(0)
+    opacity: 1
+
+.slideleft-leave-to
+  .page, .nav__link__current
+    transform: translateX(100%)
+    opacity: 0
+
+.page
+  position: absolute
+  margin-left: 150px
+  width: calc(100vw - 300px)
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-content: space-between
+  align-items: center
+  flex-direction: column
+  z-index: 100
+  transition: all .2s
+
+body
+  background-color: #f7f7f7

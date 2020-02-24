@@ -40,4 +40,6 @@ export default {
 
 .links
   padding-top: 15px
+
+
 </style>

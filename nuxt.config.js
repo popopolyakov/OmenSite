@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    { src: '~assets/main.sass', lang: 'sass'} 
   ],
   /*
   ** Plugins to load before mounting the App
@@ -39,6 +40,8 @@ export default {
   */
   modules: [
   ],
+
+  transition: 'fade',
   /*
   ** Build configuration
   */
@@ -49,4 +52,7 @@ export default {
     extend(config, ctx) {
     }
   }
+
+
 }
+
