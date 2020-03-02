@@ -19,9 +19,6 @@ export default {
 
 <style lang="sass">
 
-.current_page
-  flex-grow: 1
-
 .container
 
 </style>

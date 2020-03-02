@@ -12,7 +12,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese' }
     ]
   },
   /*
@@ -26,6 +27,14 @@ export default {
     { src: '~assets/main.sass', lang: 'sass'} 
   ],
   /*
+  ** Global CSS
+  */
+  webfontloader: {
+    google: {
+      families: ['Montserrat:400,700'] //Loads Lato font with weights 400 and 700 
+    }
+  },
+  /*
   ** Plugins to load before mounting the App
   */
   plugins: [
@@ -38,7 +47,7 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
+  modules: ['nuxt-webfontloader',
   ],
 
   transition: 'fade',

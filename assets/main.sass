@@ -1,33 +1,39 @@
 .slideleft-leave-active
   .page
     transition: all 2s ease-in-out
-  .nav__link__current
+  .nav__link_current
     transition: all 2s ease-in-out
 
 .slideleft-enter-active
   .page
     transition: all 2s ease-in-out
-  .nav__link__current
+  .nav__link_current
     transition: all 2s ease-in-out
 
 .slideleft-enter
-  .page, .nav__link__current
-    transform: translateX(-100%)
+  .page
+    transform: translateX(100%)
+    opacity: 0
+  .nav__link_current
+    transform: translateX(1000%)
     opacity: 0
 
 .slideleft-enter-to
-  .page, .nav__link__current
+  .page, .nav__link_current
     transform: translateX(0%)
     opacity: 0
 
 .slideleft-leave
-  .page, .nav__link__current
+  .page, .nav__link_current
     transform: translateX(0)
     opacity: 1
 
 .slideleft-leave-to
-  .page, .nav__link__current
+  .page
     transform: translateX(100%)
+    opacity: 0
+  .nav__link_current
+    transform: translateX(-1000%)
     opacity: 0
 
 .page

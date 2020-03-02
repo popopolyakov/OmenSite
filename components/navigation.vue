@@ -1,40 +1,48 @@
 <template lang="pug">
     .nav
-      .nav__block(:class="[altCurrentPage==='main' ? 'nav__link__current':'']" v-on:click="nextpage= ''")
-        nuxt-link.nav__link(to="/")
-          | Главная
-      .nav__block(:class="[altCurrentPage==='about' ? 'nav__link__current':'']" v-on:click="nextpage= 'about'")
-        nuxt-link.nav__link(to="/about")
-          | О нас
-      .nav__block(:class="[altCurrentPage==='items' ? 'nav__link__current':'']" v-on:click="nextpage= 'items'")
-        nuxt-link.nav__link(to="/items")
-          | Товары
-      .nav__block(:class="[altCurrentPage==='connect' ? 'nav__link__current':'']" v-on:click="nextpage= 'connect'")
-        nuxt-link.nav__link(to="/connect") 
-          | Связаться с нами
+      .nav__block(v-for="item in items" 
+                  :key=""
+                    :class="[altCurrentPage()==item.src ? 'nav__link_current':'', item.hover ? 'nav__link_hover' : '', item.name]"
+                  @click="nextpage= item.src"  
+                  @mouseenter="item.hover = true" 
+                  @mouseleave="item.hover = false")
+        nuxt-link.nav__link(:to="`${item.src}`")
+          | {{item.print}}
+
 </template>
 
 <script>
-
+/*
+.nav__block.index(:class="[altCurrentPage==='main' ? 'nav__link_current':'', elem.hover ? 'nav__link_hover' : '']" v-on:click="nextpage= ''"  @mouseenter="elem.hover = true" @mouseleave="elem.hover = false")
+        nuxt-link.nav__link(to="/")
+          | Главная
+      .nav__block.about(:class="[altCurrentPage==='about' ? 'nav__link_current':'', elem.hover ? 'nav__link_hover' : '']" v-on:click="nextpage= 'about'" @mouseenter="elem.hover = true" @mouseleave="elem.hover = false")
+        nuxt-link.nav__link(to="/about")
+          | О нас
+      .nav__block.items(:class="[altCurrentPage==='items' ? 'nav__link_current':'', elem.hover ? 'nav__link_hover' : '']" v-on:click="nextpage= 'items'" @mouseenter="elem.hover = true" @mouseleave="elem.hover = false")
+        nuxt-link.nav__link(to="/items")
+          | Товары
+      .nav__block.connect(:class="[altCurrentPage==='connect' ? 'nav__link_current':'', elem.hover ? 'nav__link_hover' : '']" v-on:click="nextpage= 'connect'" @mouseenter="elem.hover = true" @mouseleave="elem.hover = false")
+        nuxt-link.nav__link(to="/connect") 
+          | Связаться с нами
+*/
 export default {
-  computed: {
+  data() {
+    return {items: [
+      {src: '', name: 'index', hover: false, print: 'Главная'},
+      {src: 'about', name: 'about', hover: false, print: 'О нас'},
+      {src: 'items', name: 'items', hover: false, print: 'Товары'},
+      {src: 'connect', name: 'connect', hover: false, print: 'Связаться с нами'},
+    ]
+  }},
+  methods: {
     altCurrentPage() {
-      const path = this.$route.path.split('/')
-      if (path[path.length-1].toLowerCase() === '') {
-        return 'main'
-      }
-      if (path[path.length-1].toLowerCase() === 'about') {
-        return 'about'
-      }
-      if (path[path.length-1].toLowerCase() === 'items') {
-        return 'items'
-      }
-      if (path[path.length-1].toLowerCase() === 'connect') {
-        return 'connect'
-      }
-    }    
+      let path=this.$route.path.split('/')
+      return path[path.length-1].toLowerCase()
+    }
   }
 }
+
 </script>
 
 <style lang="sass">
@@ -52,13 +60,19 @@ export default {
   height: 100vh
   width: 40px
   min-width: 40px
-  border-left: 1px solid rgba(0,0,0,.1)
-  transition: 3s left ease-in
+  border-left: 0.5px solid rgba(0,0,0,.1)
+  border-left: .5px solid rgba(0,0,0,.1)
+  transition: all .5s ease,flex-grow .3s ease-in
   background: #f7f7f7
-  display: flex
+  
 
-.nav__link__current
+.nav__link_current
   flex-grow: 1
+  position: relative
+  z-index: 5
+  opacity: 0
+  
+.test
 
 .nav__link
   text-align: center
@@ -69,8 +83,18 @@ export default {
   writing-mode: vertical-lr
   transform: rotate(180deg)
   padding: 0 8px
-  color: #fff
-  mix-blend-mode: difference
+  color: black
   height: 100%
   width: 100%
+  font-family: Monserrat, bold
+  text-transform: uppercase
+  letter-spacing: 1px
+  text-decoration: none
+  word-spacing: 0px
+  transition: all .5s ease,flex-grow .3s ease-in
+
+.nav__link_hover
+  background-color: #efefef
+
+
 </style>

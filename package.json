@@ -11,7 +11,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0"
+    "gsap": "^3.2.0",
+    "normalize.css": "^8.0.1",
+    "nuxt": "^2.0.0",
+    "nuxt-webfontloader": "^1.1.0",
+    "three": "^0.113.2",
+    "three-orbit-controls": "^82.1.0",
+    "webpack-glsl-loader": "^1.0.1"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
