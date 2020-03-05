@@ -31,7 +31,7 @@ export default {
   */
   webfontloader: {
     google: {
-      families: ['Montserrat:400,700'] //Loads Lato font with weights 400 and 700 
+      families: ['Montserrat:400,700','Open+Sans+Condensed:300'] //Loads Lato font with weights 400 and 700 
     }
   },
   /*
@@ -47,7 +47,8 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: ['nuxt-webfontloader',
+  modules: [
+    'nuxt-webfontloader',
   ],
 
   transition: 'fade',

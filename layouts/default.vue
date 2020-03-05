@@ -4,6 +4,18 @@
   </div>
 </template>
 
+<script>
+import omenlogo from '~/components/omenlogo.vue'
+import navigation from '~/components/navigation.vue'
+import trans from '~/mixins/trans'
+export default {
+  mixins: [trans],
+  components: {
+    navigation, omenlogo
+  }
+}
+</script>
+
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

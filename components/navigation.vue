@@ -1,12 +1,11 @@
 <template lang="pug">
     .nav
       .nav__block(v-for="item in items" 
-                  :key=""
-                    :class="[altCurrentPage()==item.src ? 'nav__link_current':'', item.hover ? 'nav__link_hover' : '', item.name]"
+                  :class="[altCurrentPage()==item.src ? 'nav__link_current':'', item.hover ? 'nav__link_hover' : '', item.name]"
                   @click="nextpage= item.src"  
                   @mouseenter="item.hover = true" 
                   @mouseleave="item.hover = false")
-        nuxt-link.nav__link(:to="`${item.src}`")
+        nuxt-link.nav__link(:to="`${item.src}`" )
           | {{item.print}}
 
 </template>
@@ -86,7 +85,7 @@ export default {
   color: black
   height: 100%
   width: 100%
-  font-family: Monserrat, bold
+  font-family: Montserrat, bold
   text-transform: uppercase
   letter-spacing: 1px
   text-decoration: none

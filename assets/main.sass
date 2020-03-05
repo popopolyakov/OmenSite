@@ -1,3 +1,9 @@
+@font-face
+    font-family: 'DrukTextWide'
+    src: url('../static/fonts/DrukTextWide-Bold.woff') format('woff'), url('../static/fonts/DrukTextWide-Bold.ttf') format('truetype')
+    font-weight: bold
+    font-style: normal
+
 .slideleft-leave-active
   .page
     transition: all 2s ease-in-out
@@ -41,13 +47,25 @@
   margin-left: 150px
   width: calc(100vw - 300px)
   height: 100vh
-  display: flex
-  justify-content: center
-  align-content: space-between
-  align-items: center
-  flex-direction: column
   z-index: 100
   transition: all .2s
 
+main
+  font-family: Montserrat
+  
+header
+  width: 100%
+  padding: 56px 64px 0
+  display: flex
+  justify-content: space-between
+
+.omenlogo
+  justify-content: space-between
+  align-items: flex-start
+.withus
+  display: flex
+  justify-content: flex-end
+  align-items: center
 body
   background-color: #f7f7f7
+

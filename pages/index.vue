@@ -1,24 +1,28 @@
 <template lang="pug">
   .container
     navigation
-    .page
-      links
+    .index__page
+      omenlogo
 </template>
 
 <script>
-import links from '~/components/links.vue'
+import omenlogo from '~/components/omenlogo.vue'
 import navigation from '~/components/navigation.vue'
 import trans from '~/mixins/trans'
 export default {
   mixins: [trans],
   components: {
-    navigation, links
+    navigation, omenlogo
   }
 }
 </script>
 
 <style lang="sass">
 
-.container
+.index__page
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
 
 </style>

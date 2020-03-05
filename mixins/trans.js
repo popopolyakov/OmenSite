@@ -40,27 +40,24 @@ export default {
                     let links = ['index', 'about', 'items', 'connect']
                     let page = document.querySelector('.page')
                     let cur_menu = document.querySelector('.nav__link_current')
-
-                    let offset = (document.querySelector('body').clientWidth-4*40)
+                    let offset = document.querySelector('body').clientWidth-4*40
                     let n_to = links.indexOf(to.name), n_from = links.indexOf(from.name)
-                    /* if (n_to > n_from) {
-                        tl.fromTo(cur_menu, 1, { opacity: 1, x: -offset  }, { opacity: 0, x: -offset })
+                    if (n_to > n_from) {
+                        tl.fromTo(cur_menu, 0, { opacity: 0, x: -offset  }, { opacity: 0, x: 0 })
                         console.log('n_to>n_from')
-                    }*/
+                    }
                     if (n_to < n_from) {
-                        tl.fromTo(cur_menu, 1, { opacity: 1, x: offset}, { opacity: 0, x: offset })
+                        tl.fromTo(cur_menu, 0, { opacity: 0, x: offset}, { opacity: 0, x: 0 })
                         console.log('n_t<n_from')
-                    } 
+                    }
                     tl.fromTo(page, .5, { x: (n_to < n_from) ? 100 : -100, opacity: 0 }, { x: 0, opacity: 1 })
-                    done();
+                    
                 }
             },
             links: ['index','about','items','connect'],
             leave: function (el, done) {
                 if (from.name !== undefined) {
                     let cur_menu = document.querySelector('.nav__link_current')
-                    let chover_menu = document.querySelector('.nav__link_current')
-                    chover_menu.style.backgroundColor = '#f7f7f7'
                     console.log(cur_menu)
 /*                     console.log('TO:')
                     console.log(to)
@@ -71,6 +68,7 @@ export default {
                     let tl = new TimelineMax({ onComplete: done });
                     let n_to = links.indexOf(to.name), n_from = links.indexOf(from.name)
                     tl.fromTo(page, .3, { x: 0, opacity: 1 }, { x: (n_to < n_from) ? 100 : -100, opacity: 0 })
+                    tl.fromTo(cur_menu, .1, { opacity: 0 }, { opacity: 1 })
                     if (n_to > n_from) {
                         let trans_links=links.slice(n_from, n_to+1)
                         let str_menu = trans_links.map((link) => '.' + link).join(', ')
@@ -80,8 +78,8 @@ export default {
                         let offset = (document.querySelector('body').clientWidth-links.length*40)*2
                         console.log(offset)
                         console.log(menu)
-                        tl.fromTo(cur_menu, .1, { opacity: 0 }, { opacity: 1 })
                         tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: -offset, opacity: 1 })
+                        
                     }
                     else if (n_to < n_from) {
                         let trans_links=links.slice(n_to, n_from)
@@ -92,7 +90,6 @@ export default {
                         let offset = (document.querySelector('body').clientWidth-links.length*40)*1.8
                         console.log(offset)
                         console.log(menu)
-                        tl.fromTo(cur_menu, .1, { opacity: 0 }, { opacity: 1 })
                         tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: offset, opacity: 0 })
                         //tl.fromTo(cur_menu, .5, { opacity: 1 }, { opacity: 0 })
                     }
