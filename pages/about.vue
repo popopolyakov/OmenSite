@@ -4,13 +4,15 @@
     .page
       header
         omenlogo
-        .withus
+        .withus         
           a(href="http://vk.com/omenboyz")
-            | Наш ВК    
+            img.header__social__vk(:src="require(`../static/img/social/vk.png`)")
+          a(href="http://vk.com/omenboyz")
+            img.header__social__inst(:src="require(`../static/img/social/inst.png`)")
       main
-        .about__
+        .about__main
           .about__img
-            img(:src="require(`../static/img/sanya.png`)")
+            img(:src="require(`../static/img/8Efu4FB4GDM.jpg`)")
           .about__text
             br
             h1.about__h1
@@ -27,20 +29,20 @@
               br
               | Растил брэнд как ребёнка, теперь мы растём и совершенствуемся вместе. 
               br
-
-        h2.about__h2
-          | История дропов
-        VueSlickCarousel.history__slider(v-bind="carousel_settings")
-          .history__item(v-for="item in items")
-            span
-              img.history__img(:src="require(`../static/img/history/${item.img}`)")
-            span.history__desc
-              h6
-                | {{item.name}}
-              time
-                | {{item.date}}
-              p
-                | {{item.print}}
+        .history__slider__container
+          h2.about__h2
+            | История дропов
+          VueSlickCarousel.history__slider(v-bind="carousel_settings")
+            .history__item(v-for="item in items")
+              span
+                img.history__img(:src="require(`../static/img/history/${item.img}`)")
+              span.history__desc
+                h6
+                  | {{item.name}}
+                time
+                  | {{item.date}}
+                p
+                  | {{item.print}}
       typicalfooter
 
 
@@ -88,7 +90,17 @@ export default {
 <style lang="sass">
 
 .about__main
+  display: flex
+  justify-content: column
+  margin-top: 1vh
 
+.about__img 
+  width: 25vw 
+
+.about__img img
+  width: auto
+  margin-top: 3%
+  max-height: 40vh
 
 .about__page
   margin-left: 15%
@@ -99,15 +111,16 @@ main
   font-family: Open Sans Condensed
 .about__h1
   margin-left: 7%
+  margin-bottom: 2%
 .about__h1,.about__h2
   font-weight: normal
   text-transform: uppercase
   font-size: 30pt
-  margin-bottom: 2%
 
 .about__h2
   text-align: center
-  margin-top: 2%
+  margin-bottom: 2vh
+  margin-top: 1vh
 
 .about__paragraph
   font-size: 20pt
@@ -129,6 +142,9 @@ main
     font-size: 18pt
   h6
     font-size: 20pt
-.history__slider
-  margin-top: 3%
+
+.about__text
+  margin-left: 2vw
+
+  
 </style>
