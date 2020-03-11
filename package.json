@@ -11,16 +11,22 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@vk-io/authorization": "0.0.0-alpha.1",
+    "@vk-io/streaming": "0.0.0-alpha.1",
+    "dotenv": "^8.2.0",
     "gsap": "^3.2.0",
+    "node-vk-bot-api": "^3.3.3",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
     "nuxt-webfontloader": "^1.1.0",
     "three": "^0.113.2",
     "three-orbit-controls": "^82.1.0",
+    "vk-io": "^4.0.0-rc.30",
     "vue-slick-carousel": "^1.0.2",
     "webpack-glsl-loader": "^1.0.1"
   },
   "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "node-sass": "^4.13.1",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^8.0.2",

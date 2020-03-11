@@ -2,17 +2,101 @@
   .container
     navigation
     .page
-      links
+      header
+        omenlogo
+        .withus         
+          a(href="http://vk.com/omenboyz")
+            img.header__social__vk(:src="require(`../static/img/social/vk.png`)")
+          a(href="http://vk.com/omenboyz")
+            img.header__social__inst(:src="require(`../static/img/social/inst.png`)")
+      main
+        .connect__main         
+          form(@submit="sendForm")
+            p
+              | Ваше имя
+              input(type="text" v-model="connect.name" placeholder="отредактируй меня")
+            p
+              | Связь с вами (ВК/почта/instagram)
+              input(type="text" v-model="connect.link" placeholder="отредактируй меня")
+            p
+              | Ваше сообщение{{connect.test}}
+              input(type="text" v-model="connect.message" placeholder="отредактируй меня")
+            p
+              input(type="submit" placeholder="отредактируй меня")
 </template>
 
 <script>
 import links from '~/components/links.vue'
+import omenlogo from '~/components/omenlogo.vue'
 import navigation from '~/components/navigation.vue'
 import trans from '~/mixins/trans'
+import VkBot from 'node-vk-bot-api'
+import config from 'dotenv'
+
+/* function getRandomInt(min=190219210, max=241892716981698751679581) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+      }
+ */
 export default {
+  data() {
+    return {connect: {
+      name: null,
+      lick: null,
+      message: null,
+      },
+      test: process.env.TEST_ENV_VAR,
+      token_vk: process.env.TOKEN
+    }
+  },
   mixins: [trans],
   components: {
-    navigation, links
+    navigation, omenlogo
+  },
+  methods: {
+    sendForm(e) {
+      let user=this.connect.name, link=this.connect.link, message=this.connect.message
+      console.log(`${user}, ${link}, ${message}`)
+      console.log(this.test)
+
+      const bot = new VkBot(process.env.TOKEN)
+
+
+      bot.sendMessage(79892605, `Новая связь на сайте:\n\n Имя: ${user},\n Связь: ${link},\n Сообщение: ${message}`)
+      bot.startPolling(()=> {console.log('polling')})
+
+      e.preventDefault()
+/*        НЕ РАБОТАЕТ!!!!!!!!!!!!!!
+
+const vk = new VK({
+          token: '...',
+          apiMode: 'parallel',
+          pollingGroupId: ...,
+          webhookConfirmation: ...,
+          webhookSecret: '...',
+          language: 'ru',
+
+      })
+      const { updates, api } = vk
+      console.log(vk.updates)
+      console.log(getRandomInt())
+
+      updates.on('message', async (context, next) => {
+        await next()
+      })
+      
+      async function run() {
+          await console.log('polling?')
+          await vk.updates.startPolling()
+          await console.log('pooling!')
+          await api.messages.send({ "user_id": 79892605, 'message': 'приветхахахажопа', 'random_id': Number(getRandomInt()) });
+          await console.log('пошел обратно')
+          await e.preventDefault()
+      }
+
+      run().catch(console.error)*/
+    }
   }
 }
 </script>

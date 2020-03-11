@@ -96,11 +96,12 @@ export default {
 
 .about__img 
   width: 25vw 
+  margin: auto
 
 .about__img img
-  width: auto
-  margin-top: 3%
-  max-height: 40vh
+  width: 100%
+  align-items: center
+  justify-content: flex-end
 
 .about__page
   margin-left: 15%

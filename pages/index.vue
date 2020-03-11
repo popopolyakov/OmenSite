@@ -3,12 +3,14 @@
     navigation
     .index__page
       omenlogo
+      | {{}}
 </template>
 
 <script>
 import omenlogo from '~/components/omenlogo.vue'
 import navigation from '~/components/navigation.vue'
 import trans from '~/mixins/trans'
+import config from 'dotenv'
 export default {
   mixins: [trans],
   components: {

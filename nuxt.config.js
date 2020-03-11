@@ -1,4 +1,3 @@
-
 export default {
   mode: 'universal',
   /*
@@ -16,6 +15,9 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese' }
     ]
   },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -27,7 +29,7 @@ export default {
     { src: '~assets/main.sass', lang: 'sass'} 
   ],
   /*
-  ** Global CSS
+  ** ШРИФТ
   */
   webfontloader: {
     google: {
@@ -42,15 +44,14 @@ export default {
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [
+  buildModules: [ '@nuxtjs/dotenv'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-webfontloader',
+    'nuxt-webfontloader',    
   ],
-
   transition: 'fade',
   /*
   ** Build configuration
@@ -62,7 +63,5 @@ export default {
     extend(config, ctx) {
     }
   }
-
-
 }
 
