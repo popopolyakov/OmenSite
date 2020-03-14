@@ -52,7 +52,6 @@ export default {
   modules: [
     'nuxt-webfontloader',    
   ],
-  transition: 'fade',
   /*
   ** Build configuration
   */

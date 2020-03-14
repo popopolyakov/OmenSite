@@ -3,7 +3,6 @@
     navigation
     .index__page
       omenlogo
-      | {{}}
 </template>
 
 <script>

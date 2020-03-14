@@ -13,16 +13,13 @@
         .connect__main         
           form(@submit="sendForm")
             p
-              | Ваше имя
-              input(type="text" v-model="connect.name" placeholder="отредактируй меня")
+              input.connect__input(type="text" v-model="connect.name" placeholder="Ваше имя")
             p
-              | Связь с вами (ВК/почта/instagram)
-              input(type="text" v-model="connect.link" placeholder="отредактируй меня")
+              input.connect__input(type="text" v-model="connect.link" placeholder="Связь с вами (ВК/почта/instagram)")
             p
-              | Ваше сообщение{{connect.test}}
-              input(type="text" v-model="connect.message" placeholder="отредактируй меня")
-            p
-              input(type="submit" placeholder="отредактируй меня")
+              input.connect__input(type="text" v-model="connect.message" placeholder="Ваше сообщение")
+            p.connect__confirm
+              input.connect__confirm__button(type="submit" placeholder="отредактируй меня")
 </template>
 
 <script>
@@ -103,6 +100,33 @@ const vk = new VK({
 
 <style lang="sass">
 
-.container
+main
+  margin-top: 4vh
+  margin-left: 10vw
+  font-size: 20pt
 
+.connect__input
+  width: 100%
+  height: 40px
+  margin-top: 10px
+  padding-left: 1%
+  padding-top: -1px
+  font-family: Open Sans Condensed
+  font-size: 20pt
+  text-transform: uppercase
+  border-radius: 5px
+  border: rgba(0,0,0,.3) 1px solid
+
+
+.connect__confirm__button
+  background-color: whitesmoke
+  margin-top: 2vh
+  padding: 5px 10px 5px 10px
+  border-radius: 15px
+  border: rgba(0,0,0,.3) 2px solid
+  font-family: Open Sans Condensed
+  font-size: 20pt
+  text-transform: uppercase
+.connect__confirm
+  text-align: right
 </style>
