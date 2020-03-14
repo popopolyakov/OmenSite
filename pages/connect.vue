@@ -13,13 +13,13 @@
         .connect__main         
           form(@submit="sendForm")
             p
-              input.connect__input(type="text" v-model="connect.name" placeholder="Ваше имя")
+              input.connect__input(type="text" v-model="connect.name" placeholder="ВАШЕ ИМЯ")
             p
-              input.connect__input(type="text" v-model="connect.link" placeholder="Связь с вами (ВК/почта/instagram)")
+              input.connect__input(type="text" v-model="connect.link" placeholder="СВЯЗЬ С ВАМИ (ВК/ПОЧТА/INSTAGRAM)")
             p
-              input.connect__input(type="text" v-model="connect.message" placeholder="Ваше сообщение")
+              input.connect__input(type="text" v-model="connect.message" placeholder="ВАШЕ СООБЩЕНИЕ")
             p.connect__confirm
-              input.connect__confirm__button(type="submit" placeholder="отредактируй меня")
+              input.connect__confirm__button(type="submit")
 </template>
 
 <script>
@@ -113,7 +113,6 @@ main
   padding-top: -1px
   font-family: Open Sans Condensed
   font-size: 20pt
-  text-transform: uppercase
   border-radius: 5px
   border: rgba(0,0,0,.3) 1px solid
 
