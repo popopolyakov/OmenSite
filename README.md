@@ -1,22 +1,9 @@
-# omennuxt
+# NUXT
 
-> My funkadelic Nuxt.js project
+>
+
+> За идею меню спасибо le-qb.com
 
 ## Build Setup
 
-``` bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Если случайно наткнетесь на этот реп, и будет критика, буду рад если напишите в issue или www.vk.com/popopolyakov
