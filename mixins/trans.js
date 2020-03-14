@@ -1,4 +1,5 @@
-import {TimelineMax} from 'gsap'
+import { TimelineMax } from 'gsap'
+import { gsap, CSSPlugin } from 'gsap'
 export default {
     
     
@@ -30,11 +31,13 @@ export default {
         },
     } */
     transition(to, from) {
+        
         return {
             name: 'slidemenu',
             css: false,
             mode: 'out-in',
             enter: function (el, done) {
+                gsap.registerPlugin(CSSPlugin)
                 let tl = new TimelineMax({ onComplete: done });
                 if (from.name !== undefined) {
                     let links = ['index', 'about', 'items', 'connect']
@@ -57,6 +60,7 @@ export default {
             links: ['index','about','items','connect'],
             leave: function (el, done) {
                 if (from.name !== undefined) {
+                    gsap.registerPlugin(CSSPlugin)
                     let cur_menu = document.querySelector('.nav__link_current')
                     console.log(cur_menu)
 /*                     console.log('TO:')
