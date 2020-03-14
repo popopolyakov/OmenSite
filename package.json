@@ -16,6 +16,7 @@
     "@vk-io/streaming": "0.0.0-alpha.1",
     "dotenv": "^8.2.0",
     "gsap": "^3.2.0",
+    "minimist": "^1.2.5",
     "node-vk-bot-api": "^3.3.3",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
