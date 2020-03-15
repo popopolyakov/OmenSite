@@ -4,11 +4,7 @@
     .page
       header
         omenlogo
-        .withus         
-          a(href="http://vk.com/omenboyz")
-            img.header__social__vk(:src="require(`../static/img/social/vk.png`)")
-          a(href="http://vk.com/omenboyz")
-            img.header__social__inst(:src="require(`../static/img/social/inst.png`)")
+        withus
       main
         .connect__main         
           form(@submit="sendForm")
@@ -25,6 +21,7 @@
 <script>
 import links from '~/components/links.vue'
 import omenlogo from '~/components/omenlogo.vue'
+import withus from '~/components/withus.vue'
 import navigation from '~/components/navigation.vue'
 import trans from '~/mixins/trans'
 import VkBot from 'node-vk-bot-api'
@@ -49,7 +46,7 @@ export default {
   },
   mixins: [trans],
   components: {
-    navigation, omenlogo
+    navigation, omenlogo, withus
   },
   methods: {
     sendForm(e) {

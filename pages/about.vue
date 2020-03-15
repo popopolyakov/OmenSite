@@ -4,11 +4,7 @@
     .page
       header
         omenlogo
-        .withus         
-          a(href="http://vk.com/omenboyz")
-            img.header__social__vk(:src="require(`../static/img/social/vk.png`)")
-          a(href="http://vk.com/omenboyz")
-            img.header__social__inst(:src="require(`../static/img/social/inst.png`)")
+        withus
       main
         .about__main
           .about__img
@@ -54,6 +50,7 @@ import typicalfooter from '~/components/typicalfooter.vue'
 import navigation from '~/components/navigation.vue'
 import trans from '~/mixins/trans'
 import VueSlickCarousel from 'vue-slick-carousel'
+import withus from '~/components/withus.vue'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -92,7 +89,7 @@ export default {
       },
       {
         name: 'Хорни Банни', 
-        print: 'На логотипе замечаем кролика, который вылезает из-за надписи в поисках удовольствий. Он - расхититель кроличьих сердец, однако интересует в крольчихах его лишь одно.', 
+        print: 'На логотипе кролик, который вылезает из-за надписи в поисках удовольствий. Он - расхититель кроличьих сердец, однако интересует в крольчихах его лишь одно.', 
         img:'12_04_2019_3.png', 
         date: '12.04.2019'
       },
@@ -132,7 +129,7 @@ export default {
   }},
   mixins: [trans],
   components: {
-    navigation, omenlogo, VueSlickCarousel, typicalfooter
+    navigation, omenlogo, VueSlickCarousel, typicalfooter, withus
   }
 }
 </script>
@@ -142,7 +139,6 @@ export default {
 .about__main
   display: flex
   justify-content: column
-  margin-top: 1vh
 
 .about__img 
   width: 25vw 
@@ -183,7 +179,7 @@ main
   margin: auto
 
 .history__item
-  columns: 2 20em
+  columns: 2 15em
   outline: none
   .history__desc
     width: 30%
@@ -192,7 +188,7 @@ main
   p, time
     margin-top: 1%
   p
-    font-size: 18pt
+    font-size: 16pt
   h6
     font-size: 20pt
 
@@ -202,4 +198,5 @@ main
 
 .about__text
   margin-left: 2vw
-</style>
+  margin-top: -4%
+</style>  

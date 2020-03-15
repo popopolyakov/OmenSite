@@ -18,6 +18,8 @@
     text-align: center
     color: black
     text-decoration: none
+    justify-content: space-between
+    align-items: flex-start
 
 
 .logo
