@@ -95,7 +95,7 @@ const vk = new VK({
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 main
   margin-top: 4vh
