@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container
+  .containerPage
     navigation
     .index__page
       omenlogo

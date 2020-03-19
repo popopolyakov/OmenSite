@@ -1,8 +1,8 @@
 <template lang="pug">
-  .container
+  .containerPage
     navigation
     .page
-      header
+      header.typicalHeader
         omenlogo
         withus
       main
@@ -35,13 +35,14 @@ import config from 'dotenv'
  */
 export default {
   data() {
-    return {connect: {
-      name: null,
-      lick: null,
-      message: null,
-      },
+    return {
       test: process.env.TEST_ENV_VAR,
-      token_vk: process.env.TOKEN
+      token_vk: process.env.TOKEN,
+      connect: {
+        name: null,
+        lick: null,
+        message: null,
+      },
     }
   },
   mixins: [trans],

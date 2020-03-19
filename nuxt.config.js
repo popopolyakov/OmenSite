@@ -15,6 +15,7 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese' }
     ]
   },
+
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
@@ -33,7 +34,7 @@ export default {
   */
   webfontloader: {
     google: {
-      families: ['Montserrat:400,700','Open+Sans+Condensed:300'] //Loads Lato font with weights 400 and 700 
+      families: ['Montserrat:300,400,700','Open+Sans+Condensed:300'] //Loads Lato font with weights 400 and 700 
     }
   },
   /*
@@ -44,14 +45,52 @@ export default {
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [ '@nuxtjs/dotenv'
+  buildModules: [
+    '@nuxtjs/dotenv', '@nuxtjs/vuetify',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-webfontloader',    
+    'nuxt-webfontloader',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
+  /*
+  **NUXT AUTH
+  */
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000/api'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+        // autoFetchUser: true
+      }
+    }
+  },
+  /*
+  **  VUETIFY FOR ADMIN
+  */
+  vuetify: {
+  /* module options */
+    defaultAssets: {
+      font: true,
+      icons: 'md'
+    },
+    icons: {
+      iconfont: 'md',
+    }
+  },
+  
   /*
   ** Build configuration
   */

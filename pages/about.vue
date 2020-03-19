@@ -1,8 +1,8 @@
 <template lang="pug">
-  .container
+  .containerPage
     navigation
     .page
-      header
+      header.typicalHeader
         omenlogo
         withus
       main
@@ -118,6 +118,7 @@ export default {
         date: '16.12.2019'
       },
     ],
+    drawer: null,
     carousel_settings: {
       "dots": false,
       "infinite": false,
@@ -134,20 +135,24 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 .about__main
   display: flex
-  justify-content: column
+
 
 .about__img 
   width: 25vw 
   margin: auto
+  max-height: 35vh
+  display: flex
+  align-items: center
+  justify-content: center
 
 .about__img img
-  width: 100%
-  align-items: center
-  justify-content: flex-end
+  width: auto
+  max-width: 25vw
+  max-height: 35vh
 
 .about__page
   margin-left: 15%
@@ -158,7 +163,7 @@ main
   font-family: Open Sans Condensed
 .about__h1
   margin-left: 7%
-  margin-bottom: 2%
+  margin-bottom: 1%
 .about__h1,.about__h2
   font-weight: normal
   text-transform: uppercase
@@ -198,5 +203,6 @@ main
 
 .about__text
   margin-left: 2vw
-  margin-top: -4%
+  max-width: 75vw
+
 </style>  

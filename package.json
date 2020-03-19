@@ -1,17 +1,19 @@
 {
   "name": "omennuxt",
   "version": "1.0.0",
+  "private": true,
   "description": "My funkadelic Nuxt.js project",
   "author": "CUDDLER",
-  "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt",
     "generate": "nuxt generate",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "start": "nuxt start"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.9.0",
+    "@nuxtjs/axios": "^5.9.5",
     "dotenv": "^8.2.0",
     "gsap": "^3.2.0",
     "minimist": "^1.2.5",
@@ -26,8 +28,10 @@
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/vuetify": "^1.11.0",
     "node-sass": "^4.13.1",
     "pug-plain-loader": "^1.0.0",
+    "sass": "^1.19.0",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-pug": "~1.0.7"
   }

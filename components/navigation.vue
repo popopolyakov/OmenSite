@@ -5,7 +5,7 @@
                   @click="nextpage= item.src"  
                   @mouseenter="item.hover = true" 
                   @mouseleave="item.hover = false")
-        nuxt-link.nav__link(:to="`${item.src}`" )
+        nuxt-link.nav__link(:to="`${item.src}`")
           | {{item.print}}
 
 </template>
