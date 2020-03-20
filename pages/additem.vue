@@ -4,6 +4,6 @@
 </template>
 <script>
 export default {
-/*   middleware: ['adminscope'] */
+  middleware: ['adminscope']
 }
 </script>

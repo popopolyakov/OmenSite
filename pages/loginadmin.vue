@@ -1,4 +1,4 @@
-<template>
+<template class="adminTemplate-layout">
 <!-- VUETIFY EXAMPLE -->
   <v-app id="inspire">
     <v-content>
@@ -73,13 +73,12 @@ export default {
   //middleware: 'auth',
   methods: {
     userLogin(loginInfo) {
-        console.log(loginInfo)
         this.$store.dispatch('login/login', {login: loginInfo.login, pass: loginInfo.password})
-        !!this.$store.state.login.token ? this.$router.push('additem') : this.$router.push('/')
-        
-        console.log('router compplete')
+        //console.log(this.$middleware)
+        !!this.$store.state.login.token ? this.$router.push('additem') : this.$router.replace('404');
     }
-  }
+  },
+
 }
 
 </script>

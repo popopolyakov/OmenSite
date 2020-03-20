@@ -2,7 +2,7 @@
     .withus         
           a(href="http://vk.com/omenboyz")
             img.header__social__vk(:src="require(`../static/img/social/vk.png`)")
-          a(href="http://vk.com/omenboyz")
+          a(href="https://www.instagram.com/omenboyz/")
             img.header__social__inst(:src="require(`../static/img/social/inst.png`)")
 </template>
 

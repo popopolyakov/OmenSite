@@ -40,8 +40,8 @@ export default {
                 gsap.registerPlugin(CSSPlugin)
                 let tl = new TimelineMax({ onComplete: done });
                 if (from.name !== undefined) {
-                    let links = ['index', 'about', 'items', 'connect']
                     let page = document.querySelector('.page')
+                    let links = ['index', 'about', 'items', 'connect']
                     let cur_menu = document.querySelector('.nav__link_current')
                     let offset = document.querySelector('body').clientWidth-4*40
                     let n_to = links.indexOf(to.name), n_from = links.indexOf(from.name)
@@ -57,18 +57,13 @@ export default {
                     
                 }
             },
-            links: ['index','about','items','connect'],
             leave: function (el, done) {
                 if (from.name !== undefined) {
                     gsap.registerPlugin(CSSPlugin)
                     let cur_menu = document.querySelector('.nav__link_current')
-                    console.log(cur_menu)
-/*                     console.log('TO:')
-                    console.log(to)
-                    console.log('FROM:')
-                    console.log(from) */
-                    let page = document.querySelector('.page')
                     let links = ['index', 'about', 'items', 'connect']
+                    console.log(cur_menu)
+                    let page = document.querySelector('.page')
                     let tl = new TimelineMax({ onComplete: done });
                     let n_to = links.indexOf(to.name), n_from = links.indexOf(from.name)
                     tl.fromTo(page, .3, { x: 0, opacity: 1 }, { x: (n_to < n_from) ? 100 : -100, opacity: 0 })
@@ -83,7 +78,6 @@ export default {
                         console.log(offset)
                         console.log(menu)
                         tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: -offset, opacity: 1 })
-                        
                     }
                     else if (n_to < n_from) {
                         let trans_links=links.slice(n_to, n_from)
@@ -95,9 +89,8 @@ export default {
                         console.log(offset)
                         console.log(menu)
                         tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: offset, opacity: 0 })
-                        //tl.fromTo(cur_menu, .5, { opacity: 1 }, { opacity: 0 })
                     }
-                }
+                }                    
             },
         }
     }

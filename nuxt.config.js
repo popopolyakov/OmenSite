@@ -54,7 +54,7 @@ export default {
   modules: [
     'nuxt-webfontloader',
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
+  /*   '@nuxtjs/auth', */
   ],
   /*
   **NUXT AUTH
@@ -63,24 +63,24 @@ export default {
     baseURL: process.env.BASE_URL || 'http://localhost:3000/api'
   },
 
-  auth: {
+/*   auth: {
     strategies: {
       local: {
         endpoints: {
           login: { url: '/auth/login', method: 'post', propertyName: 'token' },
           logout: { url: '/auth/logout', method: 'post' },
           user: { url: '/auth/user', method: 'get', propertyName: 'user' }
-        },
+        }, 
         // tokenRequired: true,
         // tokenType: 'bearer'
         // autoFetchUser: true
       }
     }
-  },
+  },*/
   /*
   **  VUETIFY FOR ADMIN
   */
-  vuetify: {
+ vuetify: {
   /* module options */
     defaultAssets: {
       font: true,
