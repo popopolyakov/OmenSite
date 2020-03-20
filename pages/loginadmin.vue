@@ -1,4 +1,4 @@
-<template class="adminTemplate-layout">
+<template class="empty-layout">
 <!-- VUETIFY EXAMPLE -->
   <v-app id="inspire">
     <v-content>
@@ -67,7 +67,8 @@ export default {
       userInfo: {
         login: '',
         password: '',
-      }
+      },
+      drawer: null,
     }
   },
   //middleware: 'auth',
@@ -76,9 +77,10 @@ export default {
         this.$store.dispatch('login/login', {login: loginInfo.login, pass: loginInfo.password})
         //console.log(this.$middleware)
         !!this.$store.state.login.token ? this.$router.push('additem') : this.$router.replace('404');
-    }
+    },
+    
   },
-
+  layout: 'empty',
 }
 
 </script>
