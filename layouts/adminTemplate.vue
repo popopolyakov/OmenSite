@@ -20,17 +20,7 @@
       v-content
         v-container(fluid='', fill-height='')
           v-layout(align-center='', justify-center='')
-            v-flex(shrink='')
-              v-tooltip(right='')
-                template(v-slot:activator='{ on }')
-                  v-btn(:href='source', icon='', large='', target='_blank', v-on='on')
-                    v-icon(large='') mdi-code-tags
-                span Source
-              v-tooltip(right='')
-                template(v-slot:activator='{ on }')
-                  v-btn(icon='', large='', href='https://codepen.io/johnjleider/pen/bXNzZL', target='_blank', v-on='on')
-                    v-icon(large='') mdi-codepen
-                span Codepen
+            nuxt
       v-footer(app='')
         span &copy; 2020 @popopolyakov
 
