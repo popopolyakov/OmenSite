@@ -44,3 +44,23 @@ export const state = () => ({
         },
       ],
 })
+
+export const mutations = {
+  setItem(state, {changeString:changeString, editID:editID, changeProperty:changeProperty}) {
+    console.log(changeString, editID, changeProperty)
+    console.log(state.products[editID - 1][`${changeProperty}`])
+    state.products[editID - 1][`${changeProperty}`] = changeString
+    console.log(state.products[editID - 1][`${changeProperty}`])
+  },
+}
+
+export const actions = {
+  setProperty({ commit }, ctx) {
+    console.log(ctx)
+    commit('setItem', ctx)
+  },
+}
+
+export const getters = {
+  getProducts: s => [...s.products]
+}

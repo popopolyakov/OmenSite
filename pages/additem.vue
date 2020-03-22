@@ -6,14 +6,14 @@
           v-edit-dialog(:return-value.sync='props.item.name', @save='save', @cancel='cancel', @open='open', @close='close')
             | {{ props.item.name }}
             template(v-slot:input='')
-              v-text-field(v-model='props.item.name', :rules='[max25chars]', label='Edit', single-line='', counter='')
-        template(v-slot:item.iron='props')
-          v-edit-dialog(:return-value.sync='props.item.iron', large='', persistent='', @save='save', @cancel='cancel', @open='open', @close='close')
-            div {{ props.item.iron }}
+              v-text-field(v-model='props.item.name', :rules='[max250chars]', label='Edit', single-line='', counter='')
+        template(v-slot:item.print='props')
+          v-edit-dialog(:return-value.sync='props.item.print', large='', persistent='', @save='save({changeString: props.item.print, editID: props.item.id, changeProperty: "print"})', @cancel='cancel', @open='open', @close='close')
+            div {{ props.item.print }}
             template(v-slot:input='')
-              .mt-4.title Update Iron
+              .mt-4.title Update print
             template(v-slot:input='')
-              v-text-field(v-model='props.item.iron', :rules='[max25chars]', label='Edit', single-line='', counter='', autofocus='')
+              v-text-field(v-model='props.item.print', :rules='[max250chars]', label='Edit', single-line='', counter='', autofocus='')
       v-snackbar(v-model='snack', :timeout='3000', :color='snackColor')
         | {{ snackText }}
         v-btn(text='', @click='snack = false') Close
@@ -29,7 +29,7 @@ export default {
       snack: false,
       snackColor: '',
       snackText: '',
-      max25chars: v => v.length <= 25 || 'Input too long!',
+      max250chars: v => v.length <= 250 || 'Input too long!',
       pagination: {},
       headers: [
         {
@@ -43,11 +43,13 @@ export default {
         { text: 'Дата релиза', value: 'date' },
         { text: 'ID', value: 'id' },
       ],
-      products: [...this.$store.state.products.products],
+      products: JSON.parse(JSON.stringify(this.$store.getters['products/getProducts']))
     }
   },
   methods: {
-    save () {
+    save (ctx) {
+      console.log(ctx)
+      this.$store.dispatch('products/setProperty', ctx)
       this.snack = true
       this.snackColor = 'success'
       this.snackText = 'Data saved'

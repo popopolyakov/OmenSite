@@ -47,7 +47,7 @@ export default {
   },
  data() {
     return {
-      items: [...this.$store.state.products.products],
+      items: this.$store.getters['products/getProducts'],
       curItem: false
     }
   }
