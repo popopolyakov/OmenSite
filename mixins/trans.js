@@ -31,15 +31,20 @@ export default {
         },
     } */
     transition(to, from) {
-        
         return {
             name: 'slidemenu',
             css: false,
             mode: 'out-in',
             enter: function (el, done) {
+                let omenBackground = document.querySelectorAll('.ball')
+                    console.log(omenBackground)
+                    if (!!omenBackground) {
+                        console.log('Удаляю')
+                        omenBackground.forEach(onefinger => onefinger.remove('.ball'))
+                    }
                 gsap.registerPlugin(CSSPlugin)
                 let tl = new TimelineMax({ onComplete: done });
-                if (from.name !== undefined) {
+                if (!!from.name) {
                     let page = document.querySelector('.page')
                     let links = ['index', 'about', 'items', 'connect']
                     let cur_menu = document.querySelector('.nav__link_current')
@@ -58,7 +63,8 @@ export default {
                 }
             },
             leave: function (el, done) {
-                if (from.name !== undefined) {
+                if (!!from.name) {
+                    
                     gsap.registerPlugin(CSSPlugin)
                     let cur_menu = document.querySelector('.nav__link_current')
                     let links = ['index', 'about', 'items', 'connect']
@@ -68,6 +74,7 @@ export default {
                     let n_to = links.indexOf(to.name), n_from = links.indexOf(from.name)
                     tl.fromTo(page, .3, { x: 0, opacity: 1 }, { x: (n_to < n_from) ? 100 : -100, opacity: 0 })
                     tl.fromTo(cur_menu, .1, { opacity: 0 }, { opacity: 1 })
+                   
                     if (n_to > n_from) {
                         let trans_links=links.slice(n_from, n_to+1)
                         let str_menu = trans_links.map((link) => '.' + link).join(', ')
@@ -90,6 +97,7 @@ export default {
                         console.log(menu)
                         tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: offset, opacity: 0 })
                     }
+                    
                 }                    
             },
         }
