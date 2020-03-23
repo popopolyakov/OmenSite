@@ -36,8 +36,12 @@ export default {
             css: false,
             mode: 'out-in',
             enter: function (el, done) {
+                let testOverflow = document.querySelector('html').style.overflowY;
+                if (testOverflow == 'hidden') {
+                    document.querySelector('html').style.overflowY = 'auto'
+                    document.querySelector('html').style.overflowX = 'auto'
+                } 
                 let omenBackground = document.querySelectorAll('.ball')
-                    console.log(omenBackground)
                     if (!!omenBackground) {
                         console.log('Удаляю')
                         omenBackground.forEach(onefinger => onefinger.remove('.ball'))
@@ -63,8 +67,10 @@ export default {
                 }
             },
             leave: function (el, done) {
+                
+                console.log(document.querySelector('html').style.overflowY, document.querySelector('html').style.overflowX);
                 if (!!from.name) {
-                    
+
                     gsap.registerPlugin(CSSPlugin)
                     let cur_menu = document.querySelector('.nav__link_current')
                     let links = ['index', 'about', 'items', 'connect']

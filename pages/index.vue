@@ -23,7 +23,7 @@ export default {
       console.log('ПАШЛО ДОБРО')
       const numBalls = 20;
       const balls = [];
-
+      document.querySelector('html').style.overflow='hidden'
       for (let i = 0; i < numBalls; i++) {
           let ball = document.createElement("div");
           ball.classList.add("ball");
@@ -65,6 +65,7 @@ export default {
 </script>
 
 <style lang="sass">
+
 
 .index__page
   display: flex
