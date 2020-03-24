@@ -68,7 +68,7 @@ export default {
             },
             leave: function (el, done) {
                 
-                console.log(document.querySelector('html').style.overflowY, document.querySelector('html').style.overflowX);
+                
                 if (!!from.name) {
 
                     gsap.registerPlugin(CSSPlugin)
