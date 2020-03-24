@@ -7,7 +7,7 @@
       main
         h1.items__title Наши товары
         listItem(:curItem="curItem" :items="items" @openItem="openItem")
-        curItem(v-if="curItem" :curItem="curItem" :items="items[curItem-1]" @closeItmDetls="closeItmDetls" )
+        curItem(v-if="curItem" :curItem="curItem" :items="items[curItem-1]" @closeItemDetails="closeItemDetails" )
       typicalfooter
     navigation
 </template>
@@ -36,9 +36,8 @@ export default {
   methods: {
     openItem(id) {
       this.curItem=id
-      console.log(this.curItem)
     },
-    closeItmDetls() {
+    closeItemDetails() {
       this.curItem=0
     }
   }
