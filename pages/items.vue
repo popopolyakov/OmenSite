@@ -7,9 +7,9 @@
       main
         h1.items__title Наши товары
         listItem(:curItem="curItem" :items="items" @openItem="openItem")
-        curItem(v-if="curItem" :curItem="curItem" :items="items[curItem-1]" @closeItemDetails="closeItemDetails" )
       typicalfooter
     navigation
+    curItem(v-if="curItem" :curItem="curItem" :items="items[curItem-1]" @closeItemDetails="closeItemDetails" )
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 
 .items__title
   text-align: center
