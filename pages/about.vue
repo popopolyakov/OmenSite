@@ -40,6 +40,7 @@
               p
                 | {{item.print}}
       typicalfooter
+      index3d
 
 
 </template>
@@ -54,6 +55,7 @@ import withus from '~/components/withus.vue'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import index3d from '~/components/index3d.vue'
 export default {
   data() {
     return {items: [
@@ -130,7 +132,7 @@ export default {
   }},
   mixins: [trans],
   components: {
-    navigation, omenlogo, VueSlickCarousel, typicalfooter, withus
+    navigation, omenlogo, VueSlickCarousel, typicalfooter, withus, index3d
   }
 }
 </script>
@@ -139,7 +141,6 @@ export default {
 
 .about__main
   display: flex
-
 
 .about__img 
   width: 25vw 
@@ -161,9 +162,11 @@ main
   font-stretch: extra-expanded
   text-transform: uppercase
   font-family: Open Sans Condensed
+  
 .about__h1
   margin-left: 7%
   margin-bottom: 1%
+  
 .about__h1,.about__h2
   font-weight: normal
   text-transform: uppercase
