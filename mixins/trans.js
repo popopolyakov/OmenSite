@@ -82,26 +82,30 @@ export default {
                     tl.fromTo(cur_menu, .1, { opacity: 0 }, { opacity: 1 })
                    
                     if (n_to > n_from) {
-                        let trans_links=links.slice(n_from, n_to+1)
+                        let trans_links = links.slice(n_from, n_to + 1)
                         let str_menu = trans_links.map((link) => '.' + link).join(', ')
                         console.log(str_menu)
                         console.log(links)
-                        let menu = document.querySelectorAll(str_menu)
-                        let offset = (document.querySelector('body').clientWidth-links.length*40)*2
-                        console.log(offset)
-                        console.log(menu)
-                        tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: -offset, opacity: 1 })
+                        if (!!str_menu) { 
+                            let menu = document.querySelectorAll(str_menu)
+                            let offset = (document.querySelector('body').clientWidth - links.length * 40) * 2
+                            console.log(offset)
+                            console.log(menu)
+                            tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: -offset, opacity: 1 })
+                        }
                     }
                     else if (n_to < n_from) {
                         let trans_links=links.slice(n_to, n_from)
                         let str_menu = trans_links.map((link) => '.' + link).join(', ')
-                        console.log(str_menu)
+                        //console.log(document.querySelectorAll(str_menu))
                         console.log(links)
-                        let menu = document.querySelectorAll(str_menu)
-                        let offset = (document.querySelector('body').clientWidth-links.length*40)*1.8
-                        console.log(offset)
-                        console.log(menu)
-                        tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: offset, opacity: 0 })
+                        if (!!str_menu) {
+                            let menu = document.querySelectorAll(str_menu)
+                            let offset = (document.querySelector('body').clientWidth - links.length * 40) * 1.8
+                            console.log(offset)
+                            console.log(menu)
+                            tl.fromTo(menu, 1, { x: 0, opacity: 1 }, { x: offset, opacity: 0 })
+                        }
                     }
                     
                 }                    

@@ -1,7 +1,10 @@
 <template>
 	<div class="animation">
 		{{page}}
+		<a v-on:click="changeSlide('about')" class="link">Эбаут</a>
+		<a v-on:click="changeSlide('newindex')" class="link index">Ньюиндекс</a>
 	</div>
+	
 </template>
 
 
@@ -20,18 +23,22 @@
 			return {
 				state: [],
 				material: {},
-				geometry: {}
+				geometry: {},
+				currentSlide: 'newindex'
 			}
 		},
         computed: mapState(['page']),
-        middleware:'animation',
+		//middleware: 'animation',
+		methods: {
+			changeSlide(ctx) {
+				this.currentSlide=ctx
+			}
+		},
 		watch: {
-            page: 
-                
-                function(newValue,oldValue){
+            currentSlide: function(newValue,oldValue) {
 				let vm = this;
-                console.log(newValue,oldValue);
-                
+				console.log(newValue,oldValue, 'ЗДАРОВА');
+				
 				vm.geometry.attributes.target = vm.state[newValue];
 				vm.geometry.needsUpdate = true;
 				let tl = new TimelineMax({onComplete: function(){
@@ -40,12 +47,10 @@
 					vm.geometry.needsUpdate = true;
 				}});
 				tl
-				  .to(vm.material.uniforms.blend,0.5,{value:1},0);
-				
+				.to(vm.material.uniforms.blend,2,{value:1},0);
 			}
 		},
 		mounted(){
-            console.log(loader);
 			var camera, pos, controls, scene, renderer, geometry, geometry1, material;
 			let vm = this;
 			function init() {
@@ -66,30 +71,29 @@
                 vm.geometry.attributes.position.copyArray(mesh.attributes.position.array);
                 
                 let temp = new THREE.BufferAttribute(positions,3);
-                console.log(mesh.attributes.position.array, "ПУШ В СТЕЙТ")
                 states.push(temp.copyArray(mesh.attributes.position.array));
-                console.log(mesh.attributes.position.array, "НЬЮИНДЕКС")
 			    vm.state['newindex'] = temp.copyArray(mesh.attributes.position.array);
 			    for (var i = 0; i <= numVertices*3; i=i+3) {
 			      cube[i] = Math.random()*2;
 			      cube[i+1] = Math.random()*2 + 1;
 			      cube[i+2] = Math.random()*2 -1;
-			    }
+				}
+				
 			    vm.geometry.setAttribute('source', new THREE.BufferAttribute(cube,3));
 			    states.push(new THREE.BufferAttribute(cube,3));
-			    vm.state['about'] = new THREE.BufferAttribute(cube,3);
+			    vm.state['another'] = new THREE.BufferAttribute(cube,3);
 			    console.log(vm.state,'VM STATE');
 			    let teta,z;
 			    for (var i = 0; i < numVertices*3; i=i+3) {
 			      teta = Math.random()*2*Math.PI;
 			      z = 2*Math.random()*2 - 1;
-			      sphere[i] = 2*Math.sqrt(1 - z*z)*Math.cos(teta) ;
-			      sphere[i+1] = 2*Math.sqrt(1 - z*z)*Math.sin(teta) + 2;
-			      sphere[i+2] = 2*z;
+			      sphere[i] = 200*Math.sqrt(1 - z*z)*Math.cos(teta) ;
+			      sphere[i+1] = 200*Math.sqrt(1 - z*z)*Math.sin(teta) + 2;
+			      sphere[i+2] = 200*z;
 			    }
 			
 			    
-			    vm.state['another'] = new THREE.BufferAttribute( sphere, 3 );
+			    vm.state['about'] = new THREE.BufferAttribute( sphere, 3 );
 			    // console.log($nuxt.$route.name,'HAPPINESSS');
 			    vm.geometry.attributes.source = vm.state[$nuxt.$route.name];
 			    vm.material = new THREE.RawShaderMaterial( {
@@ -161,6 +165,15 @@
 			    
 			 
 			}
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
 			function resize() {
 			  var w = window.innerWidth;
 			  var h = window.innerHeight;
@@ -168,15 +181,26 @@
 			  camera.aspect = w / h;
 			  camera.updateProjectionMatrix();
 			}
+
 			let time = 0;
+
 			function animate() {
 			  time++;
 			  requestAnimationFrame(animate);
 			  render();
 			}
+
+
+			
 			function render() {
-			  renderer.render(scene, camera);
+				controls.update();
+
+
+				renderer.setRenderTarget( null );
+				renderer.clear();
+				renderer.render( scene, camera );
 			}
+
 			init();
 			animate();
 		}
@@ -186,6 +210,16 @@
 <style>
 	.animation{
 		position: fixed;
+        z-index: 9998
+	}
+	.link{
+		position: fixed;
+		width: 100px;
+		color: red;
+		height: 20px;
         z-index: 9999
+	}
+	.index {
+		margin-left: 60px
 	}
 </style>
