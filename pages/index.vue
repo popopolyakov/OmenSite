@@ -1,24 +1,39 @@
 <template lang="pug">
-  .containerPage(@click="neverbalicaBackground()")
+  .containerPage
+    
     navigation
-    .index__page
-      omenlogo
-      p
-        | Нажми на меня :)
+    .index__page(v-if="!webgl")
+      omenlogo(v-if="!webgl")
+      .start(@click="startwebgl(); changeCurrentSlide('about')") Нажми на меня :)
+    index3d(:webgl="webgl" :currentSlide.sync="currentSlide" @closeAnimation="closeAnimation" @changeCurrentSlide="changeCurrentSlide")
 </template>
 
 <script>
 import omenlogo from '~/components/omenlogo.vue'
 import navigation from '~/components/navigation.vue'
+import index3d from '~/components/index3d.vue'
 import trans from '~/mixins/trans'
 import config from 'dotenv'
 export default {
+  data() {
+    return {
+      webgl: false,
+      currentSlide: ''
+    }
+  },
   mixins: [trans],
   components: {
-    navigation, omenlogo
+    navigation, omenlogo, index3d
   },
-  //middleware: 'neverbalicaBackground', НЕ РАБОТАЕТ ИЗ-ЗА SSR
+  //middleware: 'neverbalicaBackground', // НЕ РАБОТАЕТ ИЗ-ЗА SSR
   methods: {
+    startwebgl() {     
+      this.webgl=true
+      console.log(this.webgl)
+    },
+    closeAnimation() {
+      this.webgl=false
+    },
     neverbalicaBackground: function() {
       console.log('ПАШЛО ДОБРО')
       const numBalls = 20;
@@ -59,6 +74,10 @@ export default {
               }
           );
       });
+    },
+
+    changeCurrentSlide(ctx) {
+      this.currentSlide=ctx
     }
   }
 }
@@ -74,9 +93,12 @@ export default {
   height: 100vh
   flex-direction: column
   margin-right: 120px
+  z-index: 100
   > p
     font-family: DrukTextWide
     padding-top: 1vh
+  > .start
+    z-index: 150
 
 .ball 
   position: absolute

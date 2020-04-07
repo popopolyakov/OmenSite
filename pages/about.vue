@@ -40,7 +40,6 @@
               p
                 | {{item.print}}
       typicalfooter
-      index3d
 
 
 </template>

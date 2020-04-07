@@ -13,4 +13,4 @@ const createStore = () => {
   })
 }
 
- createStore
+createStore

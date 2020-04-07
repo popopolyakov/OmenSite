@@ -1,11 +1,11 @@
 <template lang="pug">
   .containerPage
     navigation
-    .index__page
+    //.index__page
       omenlogo
       p
         | Нажми на меня :)
-      index3d
+    index3d
 </template>
 
 <script>
