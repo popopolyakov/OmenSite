@@ -1,12 +1,18 @@
 <template>
 	<div class="animation">
 		{{page}}
+<<<<<<< HEAD
 		<div class="anim__buttons">
 			<button v-on:click="changeCurrentSlide('about')" class="link">Эбаут</button>
 			<button v-on:click="changeCurrentSlide('newindex')" class="link index" :key="currentSlide">Ньюиндекс</button>
 			<button v-on:click="closeAnimation()">Закрыть</button>
 		</div>
+=======
+		<a v-on:click="changeSlide('about')" class="link">Эбаут</a>
+		<a v-on:click="changeSlide('newindex')" class="link index">Ньюиндекс</a>
+>>>>>>> 4fe63cdba5763c63d2adea363367f8d3666a9c01
 	</div>
+	
 </template>
 
 
@@ -26,7 +32,11 @@
 				state: [],
 				material: {},
 				geometry: {},
+<<<<<<< HEAD
 				currentSlideLocal: ''
+=======
+				currentSlide: 'newindex'
+>>>>>>> 4fe63cdba5763c63d2adea363367f8d3666a9c01
 			}
 		},
 		props: {
@@ -188,7 +198,9 @@
 			  camera.aspect = w / h;
 			  camera.updateProjectionMatrix();
 			}
+
 			let time = 0;
+
 			function animate() {
 			  time++;
 			  requestAnimationFrame(animate);
@@ -202,6 +214,7 @@
 				renderer.render( scene, camera );
 				
 			}
+
 			init();
 			animate();
 		}
