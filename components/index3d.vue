@@ -2,9 +2,9 @@
 	<div class="animation">
 		{{page}}
 		<div class="anim__buttons">
-			<button v-on:click="changeCurrentSlide('about')" class="link">Эбаут</button>
-			<button v-on:click="changeCurrentSlide('newindex')" class="link index" :key="currentSlide">Ньюиндекс</button>
-			<button v-on:click="closeAnimation()">Закрыть</button>
+			<a v-on:click="changeCurrentSlide('about')" class="link bott">Эбаут</a>
+			<a v-on:click="changeCurrentSlide('newindex')" class="link index bott">Ньюиндекс</a>
+			<a v-on:click="closeAnimation()" class="bott">Закрыть</a>
 		</div>
 	</div>
 	
@@ -27,7 +27,7 @@
 				state: [],
 				material: {},
 				geometry: {},
-				currentSlideLocal: ''
+				currentSlideLocal: 'about'
 			}
 		},
 		props: {
@@ -79,7 +79,8 @@
 			  scene = new THREE.Scene();
 			  //scene.background = new THREE.Color(0x000000, 0);
 			  renderer = new THREE.WebGLRenderer({ alpha: true });
-			  
+			  renderer.sortObjects = false;
+			  renderer.autoClear = false;
 			  let vtkFilesArray=['newindex','about']
 
 			  for (var i = 0; i < vtkFilesArray.length; i++) {
@@ -97,30 +98,23 @@
 						let sphere = new Float32Array(numVertices*3);
 						let positions = new Float32Array(numVertices*3);
 						vm.geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
-						vm.geometry.setAttribute('target', new THREE.BufferAttribute(positions,3));
 						vm.geometry.attributes.position.copyVector3sArray(mesh.vertices);
 						
 						let temp = new THREE.BufferAttribute(positions,3);
 						states.push(temp.copyVector3sArray(mesh.vertices));
 						vm.state[file] = temp.copyVector3sArray(mesh.vertices);
-
-						//vm.geometry.verticesNeedUpdate = true;
-						
-						//vm.geometry.attributes.target = vm.state['newindex'];
 						
 						vm.material = new THREE.RawShaderMaterial( {
 							uniforms: {
-								color: { value: new THREE.Color( 0xffffff ) },
+								
 								dot: { type: 't', value: new THREE.TextureLoader().load('/reddot.png') },
-								blend: { type: 'f', value: 0 },
-								size: { type: 'f', value: 5 }
+								blend: { type: 'f', value: 1 },
+								size: { type: 'f', value: 40 }
 							},
-							vertexShader: `
-								precision highp float;
+							vertexShader: `precision highp float;
 								attribute vec3 position;
 								attribute vec3 source;
 								attribute vec3 target;
-								attribute vec3 positions;
 								uniform mat4 modelViewMatrix;
 								uniform mat4 projectionMatrix;
 								uniform float size;
@@ -130,25 +124,21 @@
 								uniform vec2 dimensions;
 								varying vec3 vColor;
 								void main() {
+									
 									vec3 result = source*(1. - blend) + blend*target;
 									vColor = normalize(result);
 									vec4 mvPosition = modelViewMatrix * vec4( result, 1. );
 									gl_PointSize = size * ( 1. / -mvPosition.z );
 									gl_Position = projectionMatrix * mvPosition;
 								}`,
-							fragmentShader: `
-								precision highp float;
+							fragmentShader: `precision highp float;
 								varying vec3 vColor;
-								uniform vec3 color;
 								uniform sampler2D dot;
 								void main() {
-									
 									vec4 color = texture2D( dot, gl_PointCoord );
 									gl_FragColor = color;
-									
-								}
-							`,
-							alphaTest: 0.5,
+								}`,
+							alphaTest: 0.2,
 							transparent: true
 						});
 
@@ -171,7 +161,7 @@
 				window.innerWidth / window.innerHeight,
 				0.001, 500
 				);
-				camera.position.set( 0, 0, 50 );
+				camera.position.set( 0, 0, 100 );
 				controls = new OrbitControls(camera, renderer.domElement);
 				resize();
 			    
@@ -199,11 +189,10 @@
 			}
 			
 			function render() {
-				controls.update();
-				renderer.setRenderTarget( null );
-				renderer.clear();
-				renderer.render( scene, camera );
 				
+
+				renderer.render( scene, camera );     // render scene 1
+
 			}
 
 			init();
@@ -212,21 +201,25 @@
 	}
 </script>
 
-<style>
-	.animation{
-		position: fixed;
-        z-index: 9998;
-		x: 0;
-		y: 0;
-	}
-	.anim__buttons{
-		position: fixed;
-		width: 100px;
-		color: red;
-		height: 20px;
-        z-index: 9999;
-		display: flex;
-		flex-direction: row;
-	}
+<style lang="sass">
+.animation
+	position: fixed
+	z-index: 9998
+	width: 90vw
+	float: left
+
+.anim__buttons
+	position: fixed
+	color: red
+	z-index: 9999
+	display: flex
+	flex-direction: row
+	display: flex
+	align-items: flex-start
+	justify-content: center
+	margin-top: 20px
+	width: 95vw
+	float: left
+
 
 </style>

@@ -1,10 +1,10 @@
 <template lang="pug">
   .containerPage
-    
     navigation
-    .index__page(v-if="!webgl")
+    
+    div.index__page(v-if="!webgl" @click="startwebgl(); changeCurrentSlide('newindex')")
       omenlogo(v-if="!webgl")
-      .start(@click="startwebgl(); changeCurrentSlide('about')") Нажми на меня :)
+      a.index__button.start(v-if="!webgl") Нажми на меня :)
     index3d(:webgl="webgl" :currentSlide.sync="currentSlide" @closeAnimation="closeAnimation" @changeCurrentSlide="changeCurrentSlide")
 </template>
 
@@ -28,8 +28,8 @@ export default {
   //middleware: 'neverbalicaBackground', // НЕ РАБОТАЕТ ИЗ-ЗА SSR
   methods: {
     startwebgl() {     
+      console.log('Hai')
       this.webgl=true
-      console.log(this.webgl)
     },
     closeAnimation() {
       this.webgl=false
@@ -90,10 +90,10 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  height: 100vh
   flex-direction: column
   margin-right: 120px
   z-index: 100
+  height: 100vh
   > p
     font-family: DrukTextWide
     padding-top: 1vh

@@ -3,9 +3,10 @@
       .nav__block(v-for="item in items" 
                   :class="[altCurrentPage()==item.src ? 'nav__link_current':'', item.hover ? 'nav__link_hover' : '', item.name]"
                   @click="nextpage= item.src"  
+                  
                   @mouseenter="item.hover = true" 
                   @mouseleave="item.hover = false")
-        nuxt-link.nav__link(:to="`${item.src}`")
+        nuxt-link.nav__link(:to="`${item.src}`" :exact="getExact(item.name) ? true : false")
           | {{item.print}}
 
 </template>
@@ -38,7 +39,11 @@ export default {
     altCurrentPage() {
       let path=this.$route.path.split('/')
       return path[path.length-1].toLowerCase()
-    }
+    },
+    getExact(ctx) {
+      console.log(this.$nuxt.$route.name==ctx, this.$nuxt.$route.name, ctx)
+      return this.$nuxt.$route.name=='index' ? true : false
+    },
   }
 }
 
