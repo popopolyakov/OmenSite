@@ -1,4 +1,5 @@
-export default {
+
+module.exports = {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -48,6 +49,7 @@ export default {
   buildModules: [
     '@nuxtjs/dotenv', '@nuxtjs/vuetify',
   ],
+
   /*
   ** Nuxt.js modules
   */
