@@ -7,7 +7,7 @@
         withus
       main
         .connect__main         
-          form(@submit="sendForm")
+          form(@submit.prevent="sendForm")
             p
               input.connect__input(type="text" v-model="connect.name" placeholder="ВАШЕ ИМЯ")
             p

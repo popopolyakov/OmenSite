@@ -27,7 +27,7 @@
 				state: [],
 				material: {},
 				geometry: {},
-				currentSlideLocal: 'about'
+				currentSlideLocal: 'newindex'
 			}
 		},
 		props: {
@@ -99,7 +99,10 @@
 						let positions = new Float32Array(numVertices*3);
 						vm.geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
 						vm.geometry.attributes.position.copyVector3sArray(mesh.vertices);
-						
+/* 						if (file=='newindex'){
+							vm.geometry.setAttribute('target', new THREE.BufferAttribute(positions,3));
+							vm.geometry.attributes.position.copyVector3sArray(mesh.vertices);
+						} */
 						let temp = new THREE.BufferAttribute(positions,3);
 						states.push(temp.copyVector3sArray(mesh.vertices));
 						vm.state[file] = temp.copyVector3sArray(mesh.vertices);
