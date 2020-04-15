@@ -1,22 +1,69 @@
 <template lang="pug">
   v-app#inspire
     div
-      v-data-table(:headers='headers', :items='products')
-        template(v-slot:item.name='props')
-          v-edit-dialog(:return-value.sync='props.item.name', @save='save', @cancel='cancel', @open='open', @close='close')
+      v-data-table(
+        :headers='headers', 
+        :items='products'
+      )
+        template(
+          v-slot:item.name='props'
+        )
+          v-edit-dialog(
+            :return-value.sync='props.item.name', 
+            @save='save', 
+            @cancel='cancel', 
+            @open='open', 
+            @close='close'
+          )
             | {{ props.item.name }}
-            template(v-slot:input='')
-              v-text-field(v-model='props.item.name', :rules='[max250chars]', label='Edit', single-line='', counter='')
-        template(v-slot:item.print='props')
-          v-edit-dialog(:return-value.sync='props.item.print', large='', persistent='', @save='save({changeString: props.item.print, editID: props.item.id, changeProperty: "print"})', @cancel='cancel', @open='open', @close='close')
+            template(
+              v-slot:input=''
+            )
+              v-text-field(
+                v-model='props.item.name', 
+                :rules='[max250chars]', 
+                label='Edit', 
+                single-line='', 
+                counter=''
+              )
+        template(
+          v-slot:item.print='props'
+        )
+          v-edit-dialog(
+            :return-value.sync='props.item.print', 
+            large='', 
+            persistent='', 
+            @save='save({changeString: props.item.print, editID: props.item.id, changeProperty: "print"})', 
+            @cancel='cancel', 
+            @open='open', 
+            @close='close'
+          )
             div {{ props.item.print }}
-            template(v-slot:input='')
+            template(
+              v-slot:input=''
+            )
               .mt-4.title Update print
-            template(v-slot:input='')
-              v-text-field(v-model='props.item.print', :rules='[max250chars]', label='Edit', single-line='', counter='', autofocus='')
-      v-snackbar(v-model='snack', :timeout='3000', :color='snackColor')
+            template(
+              v-slot:input=''
+            )
+              v-text-field(
+                v-model='props.item.print', 
+                :rules='[max250chars]', 
+                label='Edit', 
+                single-line='', 
+                counter='', 
+                autofocus=''
+              )
+      v-snackbar(
+        v-model='snack', 
+        :timeout='3000', 
+        :color='snackColor'
+      )
         | {{ snackText }}
-        v-btn(text='', @click='snack = false') Close
+        v-btn(
+          text='', 
+          @click='snack = false'
+        ) Close
 </template>
 <script>
 import adminTemplate from '~/layouts/adminTemplate.vue'
@@ -24,6 +71,12 @@ import adminTemplate from '~/layouts/adminTemplate.vue'
 export default {
   //middleware: ['adminscope'],
   layout: 'adminTemplate',
+  async asyncData({ $axios }) {
+    const getBackend = await $axios.$get('/testcatalog')
+    return { 
+      products: getBackend 
+    }
+  },
   data () {
     return {
       snack: false,
@@ -43,7 +96,7 @@ export default {
         { text: 'Дата релиза', value: 'date' },
         { text: 'ID', value: 'id' },
       ],
-      products: JSON.parse(JSON.stringify(this.$store.getters['products/getProducts']))
+      //products: JSON.parse(JSON.stringify(this.$store.getters['products/getProducts']))
     }
   },
   methods: {
