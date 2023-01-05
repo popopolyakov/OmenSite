@@ -23,7 +23,7 @@
     "node-vk-bot-api": "^3.3.3",
     "nodemon": "^2.0.3",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-webfontloader": "^1.1.0",
     "three": "^0.125.0",
     "three-orbit-controls": "^82.1.0",
